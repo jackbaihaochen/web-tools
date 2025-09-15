@@ -32,12 +32,14 @@
 </head>
 
 <body>
-    <header class="wrap">
-        <h1>在线工具箱</h1>
-        <p class="muted">纯前端 · 隐私友好 · 持续扩充</p>
-    </header>
+    <header id="site-header"></header>
 
     <main class="wrap">
+        <section class="hero">
+            <h1>在线工具箱</h1>
+            <p class="muted subtitle">纯前端 · 隐私友好 · 持续扩充</p>
+        </section>
+
         <section>
             <h2>工具目录</h2>
             <ul class="card-list">
@@ -53,6 +55,7 @@
 
         <section>
             <h2>常见问题（FAQ）</h2>
+            <p class="muted">更多问题参见 <a href="./faq.html">FAQ 全文</a>。</p>
             <details>
                 <summary>为什么说隐私友好？</summary>
                 <p>工具全部在浏览器本地运行，不上传你的数据到服务器。</p>
@@ -64,9 +67,7 @@
         </section>
     </main>
 
-    <footer class="wrap muted">
-        <p>© <span id="year"></span> 在线工具箱 · <a href="./">首页</a></p>
-    </footer>
+    <footer id="site-footer"></footer>
 
     <script src="./assets/js/site.js"></script>
 </body>
