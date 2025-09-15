@@ -11,8 +11,9 @@
 
 部署
 
-- GitHub Pages 项目页建议使用 `base: '/web-tools/'`（已在 `vite.config.ts` 配置）。
-- 使用 HashRouter，无需服务器重写规则。
+- 方式 A：启用 GitHub Pages 的 GitHub Actions 部署（推荐）。仓库 Settings → Pages → Source 选 “GitHub Actions”。工作流见 `.github/workflows/deploy.yml`。
+- 方式 B：使用 `docs` 目录托管。执行 `npm run deploy:docs`，然后在 Settings → Pages 选择 “Deploy from a branch” 并将目录设为 `main /docs`。
+- 已在 `vite.config.ts` 设置 `base: '/web-tools/'`；使用 HashRouter，无需服务器重写规则。
 
 结构
 
