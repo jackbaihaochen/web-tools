@@ -20,3 +20,13 @@
 - `src/layouts/SiteLayout.tsx`：站点统一头部、导航与脚部
 - `src/pages/*`：各页面（首页、JSON 工具、FAQ、隐私）
 - `src/styles/global.css`：全局样式与暗色主题微调
+- `src/theme/ThemeProvider.tsx`：Ant Design 明暗主题切换（localStorage 记忆）
+
+静态资源与站点图标
+
+- 将静态资源放在 `public/` 目录（构建时会原样拷贝到产物根目录）。
+- 站点图标：`public/web-tool-box-icon.png`
+- `index.html` 已配置：
+  - `<link rel="icon" href="%BASE_URL%web-tool-box-icon.png" />`
+  - `<link rel="apple-touch-icon" href="%BASE_URL%web-tool-box-icon.png" />`
+  - `%BASE_URL%` 会在构建时替换为 Vite 的 `base`（本仓库为 `/web-tools/`）。
