@@ -1,92 +1,17 @@
 <!doctype html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>JSON 格式化工具｜在线美化/压缩/校验</title>
-    <meta name="google-site-verification" content="QGZ-7VheK-sHg0cYYJsio4DfNafRIxdgNVwT5oZVD_Y" />
-    <meta name="description" content="极简在线 JSON 工具：一键格式化、压缩、校验、复制与下载。纯前端，隐私友好。" />
-    <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/tools/json-formatter/" />
-
-    <!-- 结构化数据：每个“工具页”用 SoftwareApplication -->
-    <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"SoftwareApplication",
-  "name":"JSON 格式化工具",
-  "applicationCategory":"DeveloperApplication",
-  "operatingSystem":"Web",
-  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-  "url":"https://jackbaihaochen.github.io/web-tools/tools/json-formatter/"
-}
-</script>
-
-    <link rel="stylesheet" href="../../assets/css/site.css" />
-    <style>
-        textarea { width: 100%; height: 420px }
-        .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin: .3rem 0 }
-        .status { margin-left: 10px }
-        .ok { color: #5be49b }
-        .err { color: #ff9aa8 }
-    </style>
-</head>
-
-<body>
-    <header id="site-header"></header>
-
-    <main class="wrap">
-        <section class="hero">
-            <h1>JSON 格式化工具</h1>
-            <p class="muted subtitle"><a href="../../">← 返回首页</a></p>
-        </section>
-        <div class="grid">
-            <section class="box">
-                <h2>输入</h2>
-                <textarea id="input" placeholder='{"hello":"world"}'></textarea>
-                <div class="toolbar">
-                    <button id="fmt">美化</button>
-                    <button id="min">压缩</button>
-                    <button id="chk">校验</button>
-                    <button id="clr">清空</button>
-                    <span id="msg" class="status err"></span>
-                </div>
-            </section>
-
-            <section class="box">
-                <h2>输出</h2>
-                <textarea id="out" readonly></textarea>
-                <div class="toolbar">
-                    <button id="cpy">复制</button>
-                    <button id="dl">下载 .json</button>
-                    <span id="ok" class="status ok"></span>
-                </div>
-            </section>
-        </div>
-
-        <section class="wrap">
-            <h2>说明</h2>
-            <p>本工具在浏览器本地完成 JSON 解析与格式化（调用 JavaScript 原生 <code>JSON.parse</code> 与 <code>JSON.stringify</code>）。不会上传你的数据。
-            </p>
-        </section>
-    </main>
-
-    <footer id="site-footer"></footer>
-
-    <script src="../../assets/js/site.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/web-tools/#/json-formatter" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跳转中…</title>
+    <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/#/json-formatter" />
     <script>
-        const $ = s => document.querySelector(s), I = $('#input'), O = $('#out'), M = $('#msg'), OK = $('#ok');
-        function parse() { try { return JSON.parse(I.value.trim()) } catch (e) { M.textContent = '❌ ' + e.message; return null } }
-        $('#fmt').onclick = () => { const o = parse(); if (!o) return; O.value = JSON.stringify(o, null, 2); M.textContent = ''; OK.textContent = '✔ 已完成' };
-        $('#min').onclick = () => { const o = parse(); if (!o) return; O.value = JSON.stringify(o); M.textContent = ''; OK.textContent = '✔ 已完成' };
-        $('#chk').onclick = () => { const o = parse(); if (o !== null) { M.textContent = '✅ 语法有效'; OK.textContent = '' } };
-        $('#clr').onclick = () => { I.value = ''; O.value = ''; M.textContent = ''; OK.textContent = '' };
-        $('#cpy').onclick = async () => { if (!O.value) return; await navigator.clipboard.writeText(O.value); OK.textContent = '已复制' };
-        $('#dl').onclick = () => {
-            if (!O.value) return; const b = new Blob([O.value], { type: 'application/json;charset=utf-8' });
-            const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'formatted.json'; a.click(); URL.revokeObjectURL(a.href); OK.textContent = '已下载';
-        };
+      location.replace('/web-tools/#/json-formatter');
     </script>
-</body>
-
+  </head>
+  <body>
+    <a href="/web-tools/#/json-formatter">跳转中…</a>
+  </body>
+  
 </html>
