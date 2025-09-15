@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
 import { Button, Col, Input, Row, Space, Typography, message, Alert, Card } from 'antd';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 const { TextArea } = Input;
 
 export default function JsonFormatter() {
+  const { t } = useTranslation();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -25,18 +27,18 @@ export default function JsonFormatter() {
   const onFormat = () => {
     if (parsed === null) return;
     setOutput(JSON.stringify(parsed, null, 2));
-    setOk('已完成');
+    setOk(t('json.ok'));
   };
 
   const onMinify = () => {
     if (parsed === null) return;
     setOutput(JSON.stringify(parsed));
-    setOk('已完成');
+    setOk(t('json.ok'));
   };
 
   const onValidate = () => {
     if (parsed !== null) {
-      message.success('语法有效');
+      message.success(t('json.valid'));
       setOk(null);
     }
   };
@@ -69,14 +71,14 @@ export default function JsonFormatter() {
     <Space direction="vertical" size="large" style={{ display: 'flex' }}>
       <HelmetProvider>
         <Helmet>
-          <title>JSON 格式化工具｜在线美化/压缩/校验</title>
-          <meta name="description" content="极简在线 JSON 工具：一键格式化、压缩、校验、复制与下载。纯前端，隐私友好。" />
+          <title>{t('json.title')}｜{t('json.subtitle')}</title>
+          <meta name="description" content={t('json.subtitle')} />
           <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/tools/json-formatter/" />
           <script type="application/ld+json">
             {JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'SoftwareApplication',
-              name: 'JSON 格式化工具',
+              name: t('json.title'),
               applicationCategory: 'DeveloperApplication',
               operatingSystem: 'Web',
               offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -86,8 +88,8 @@ export default function JsonFormatter() {
         </Helmet>
       </HelmetProvider>
       <div className="hero">
-        <Typography.Title level={2} style={{ marginBottom: 0 }}>JSON 格式化工具</Typography.Title>
-        <Typography.Text type="secondary">一键格式化、压缩、校验、复制与下载</Typography.Text>
+        <Typography.Title level={2} style={{ marginBottom: 0 }}>{t('json.title')}</Typography.Title>
+        <Typography.Text type="secondary">{t('json.subtitle')}</Typography.Text>
       </div>
 
       {error && <Alert type="error" showIcon message={`语法错误：${error}`} />}
@@ -95,40 +97,38 @@ export default function JsonFormatter() {
 
       <Row gutter={[16, 16]}>
         <Col xs={24} lg={12}>
-          <Card title="输入">
+          <Card title={t('json.input')}>
             <TextArea
               value={input}
               onChange={e => setInput(e.target.value)}
-              placeholder='{"hello":"world"}'
+              placeholder={t('json.placeholder')}
               autoSize={{ minRows: 16 }}
               spellCheck={false}
             />
             <div style={{ marginTop: 8 }}>
               <Space wrap>
-                <Button type="primary" onClick={onFormat}>美化</Button>
-                <Button onClick={onMinify}>压缩</Button>
-                <Button onClick={onValidate}>校验</Button>
-                <Button danger onClick={onClear}>清空</Button>
+                <Button type="primary" onClick={onFormat}>{t('json.beautify')}</Button>
+                <Button onClick={onMinify}>{t('json.minify')}</Button>
+                <Button onClick={onValidate}>{t('json.validate')}</Button>
+                <Button danger onClick={onClear}>{t('json.clear')}</Button>
               </Space>
             </div>
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="输出">
+          <Card title={t('json.output')}>
             <TextArea value={output} readOnly autoSize={{ minRows: 16 }} spellCheck={false} />
             <div style={{ marginTop: 8 }}>
               <Space wrap>
-                <Button onClick={onCopy}>复制</Button>
-                <Button onClick={onDownload}>下载 .json</Button>
+                <Button onClick={onCopy}>{t('json.copy')}</Button>
+                <Button onClick={onDownload}>{t('json.download')}</Button>
               </Space>
             </div>
           </Card>
         </Col>
       </Row>
 
-      <Typography.Paragraph>
-        本工具在浏览器本地完成 JSON 解析与格式化（调用 JavaScript 原生 <code>JSON.parse</code> 与 <code>JSON.stringify</code>）。不会上传你的数据。
-      </Typography.Paragraph>
+      <Typography.Paragraph>{t('json.note')}</Typography.Paragraph>
     </Space>
   );
 }

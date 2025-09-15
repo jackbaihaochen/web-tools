@@ -1,23 +1,30 @@
 import React, { PropsWithChildren, useMemo } from 'react';
-import { Layout, Menu, theme, Typography, Space, Switch, Tooltip } from 'antd';
-import { BulbOutlined, MoonOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme, Typography, Space, Switch, Tooltip, Select } from 'antd';
+import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { useThemeMode } from '@/theme/ThemeProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const { Header, Content, Footer } = Layout;
 
-const routes = [
-  { key: '/', label: '首页' },
-  { key: '/json-formatter', label: 'JSON 格式化' },
-  { key: '/faq', label: 'FAQ' },
-  { key: '/privacy', label: '隐私' },
-];
+function useRoutesLabels() {
+  const { t } = useTranslation();
+  return [
+    { key: '/', label: t('nav.home') },
+    { key: '/json-formatter', label: t('nav.json') },
+    { key: '/faq', label: t('nav.faq') },
+    { key: '/privacy', label: t('nav.privacy') },
+  ];
+}
 
 export default function SiteLayout({ children }: PropsWithChildren) {
   const { token } = theme.useToken();
   const location = useLocation();
   const navigate = useNavigate();
-  const { isDark, toggle } = useThemeMode();
+  const { isDark, toggle, lang, setLang } = useThemeMode();
+  const { t } = useTranslation();
+  const [search, setSearch] = useSearchParams();
+  const routes = useRoutesLabels();
 
   const selectedKeys = useMemo(() => {
     const m = routes.map(r => r.key);
@@ -28,7 +35,7 @@ export default function SiteLayout({ children }: PropsWithChildren) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ position: 'sticky', top: 0, zIndex: 10, display: 'flex', alignItems: 'center' }}>
-        <div style={{ color: token.colorText, fontWeight: 700, marginRight: 16, whiteSpace: 'nowrap' }}>在线工具箱</div>
+        <div style={{ color: token.colorText, fontWeight: 700, marginRight: 16, whiteSpace: 'nowrap' }}>{t('brand')}</div>
         <Menu
           theme="dark"
           mode="horizontal"
@@ -38,10 +45,25 @@ export default function SiteLayout({ children }: PropsWithChildren) {
           style={{ flex: 1, minWidth: 0 }}
         />
         <Space>
-          <Tooltip title={isDark ? '切换为浅色' : '切换为深色'}>
+          <Select
+            size="small"
+            value={lang}
+            style={{ width: 110 }}
+            options={[
+              { value: 'zh', label: t('lang.zh') },
+              { value: 'en', label: t('lang.en') },
+              { value: 'ja', label: t('lang.ja') },
+            ]}
+            onChange={(v) => {
+              setLang(v as any);
+              search.set('lang', v);
+              setSearch(search, { replace: true });
+            }}
+          />
+          <Tooltip title={isDark ? t('theme.toLight') : t('theme.toDark')}>
             <Switch
               checkedChildren={<MoonOutlined />}
-              unCheckedChildren={<BulbOutlined />}
+              unCheckedChildren={<SunOutlined />}
               checked={isDark}
               onChange={toggle}
             />
@@ -55,7 +77,7 @@ export default function SiteLayout({ children }: PropsWithChildren) {
       </Content>
       <Footer style={{ textAlign: 'center', borderTop: `1px solid ${token.colorBorderSecondary}` }}>
         <Typography.Text type="secondary">
-          © {new Date().getFullYear()} 在线工具箱
+          © {new Date().getFullYear()} {t('brand')}
         </Typography.Text>
       </Footer>
     </Layout>
