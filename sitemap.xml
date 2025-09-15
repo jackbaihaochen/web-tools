@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://<username>.github.io/<repo>/</loc>
+    <loc>https://jackbaihaochen.github.io/web-tools/</loc>
     <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://<username>.github.io/<repo>/tools/json-formatter/</loc>
+    <loc>https://jackbaihaochen.github.io/web-tools/tools/json-formatter/</loc>
     <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
