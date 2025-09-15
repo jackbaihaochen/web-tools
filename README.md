@@ -25,8 +25,20 @@
 静态资源与站点图标
 
 - 将静态资源放在 `public/` 目录（构建时会原样拷贝到产物根目录）。
-- 站点图标：`public/web-tool-box-icon.png`
-- `index.html` 已配置：
-  - `<link rel="icon" href="%BASE_URL%web-tool-box-icon.png" />`
-  - `<link rel="apple-touch-icon" href="%BASE_URL%web-tool-box-icon.png" />`
-  - `%BASE_URL%` 会在构建时替换为 Vite 的 `base`（本仓库为 `/web-tools/`）。
+- 站点图标：`public/web-tool-box-icon.png`（源图）
+- 多尺寸图标（同源图拷贝）：
+  - `public/web-tool-box-icon-192.png`
+  - `public/web-tool-box-icon-512.png`
+  - `public/favicon-32.png`
+  - `public/favicon.ico`
+- Web App Manifest：`public/site.webmanifest`
+- `index.html` 已配置 favicon、apple-touch-icon 与 manifest 链接；Vite 会将 `%BASE_URL%` 替换为 `base`。
+
+跳转页（兼容旧外链）
+
+- 位于 `public/` 下并随构建产物发布：
+  - `public/404.html` → 重定向至 `/web-tools/`
+  - `public/faq.html` → 重定向至 `/#/faq`
+  - `public/privacy.html` → 重定向至 `/#/privacy`
+  - `public/tools/json-formatter/index.html` → 重定向至 `/#/json-formatter`
+  - 这些页面也已内置 favicon 与 manifest 引用。
