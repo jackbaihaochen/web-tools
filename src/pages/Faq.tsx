@@ -1,4 +1,5 @@
 import { Collapse, Typography } from 'antd';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Faq() {
   const items = [
@@ -26,6 +27,23 @@ export default function Faq() {
 
   return (
     <div>
+      <HelmetProvider>
+        <Helmet>
+          <title>常见问题（FAQ）｜在线工具箱</title>
+          <meta name="description" content="关于在线工具箱的常见问题：隐私、数据处理、功能路线、开源与反馈等。" />
+          <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/faq.html" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                { '@type': 'Question', name: '为什么说隐私友好？', acceptedAnswer: { '@type': 'Answer', text: '所有操作均在浏览器本地完成，不上传你的数据。' } },
+                { '@type': 'Question', name: '支持哪些浏览器？', acceptedAnswer: { '@type': 'Answer', text: '现代浏览器（Chrome、Edge、Firefox、Safari）最新两个大版本均可。' } }
+              ]
+            })}
+          </script>
+        </Helmet>
+      </HelmetProvider>
       <div className="hero">
         <Typography.Title level={2} style={{ marginBottom: 0 }}>常见问题（FAQ）</Typography.Title>
         <Typography.Text type="secondary">关于隐私、安全与功能规划</Typography.Text>
@@ -34,4 +52,3 @@ export default function Faq() {
     </div>
   );
 }
-

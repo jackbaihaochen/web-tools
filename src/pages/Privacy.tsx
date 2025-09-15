@@ -1,8 +1,25 @@
 import { Typography } from 'antd';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Privacy() {
   return (
     <div>
+      <HelmetProvider>
+        <Helmet>
+          <title>隐私声明｜在线工具箱</title>
+          <meta name="description" content="在线工具箱隐私声明：本网站为纯前端实现，不收集、不存储、不上传你的任何输入数据。" />
+          <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/privacy.html" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'PrivacyPolicy',
+              name: '在线工具箱隐私声明',
+              url: 'https://jackbaihaochen.github.io/web-tools/privacy.html',
+              description: '本网站所有工具为纯前端实现，不收集、不存储、不上传你的任何输入数据。'
+            })}
+          </script>
+        </Helmet>
+      </HelmetProvider>
       <div className="hero">
         <Typography.Title level={2} style={{ marginBottom: 0 }}>隐私声明</Typography.Title>
         <Typography.Text type="secondary">纯前端 · 零数据上传 · 隐私友好</Typography.Text>
@@ -37,4 +54,3 @@ export default function Privacy() {
     </div>
   );
 }
-

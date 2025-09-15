@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Button, Col, Input, Row, Space, Typography, message, Alert, Card } from 'antd';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const { TextArea } = Input;
 
@@ -66,6 +67,24 @@ export default function JsonFormatter() {
 
   return (
     <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+      <HelmetProvider>
+        <Helmet>
+          <title>JSON 格式化工具｜在线美化/压缩/校验</title>
+          <meta name="description" content="极简在线 JSON 工具：一键格式化、压缩、校验、复制与下载。纯前端，隐私友好。" />
+          <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/tools/json-formatter/" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'JSON 格式化工具',
+              applicationCategory: 'DeveloperApplication',
+              operatingSystem: 'Web',
+              offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+              url: 'https://jackbaihaochen.github.io/web-tools/tools/json-formatter/'
+            })}
+          </script>
+        </Helmet>
+      </HelmetProvider>
       <div className="hero">
         <Typography.Title level={2} style={{ marginBottom: 0 }}>JSON 格式化工具</Typography.Title>
         <Typography.Text type="secondary">一键格式化、压缩、校验、复制与下载</Typography.Text>
@@ -113,4 +132,3 @@ export default function JsonFormatter() {
     </Space>
   );
 }
-
