@@ -1,0 +1,25 @@
+:root {
+  --bg: #0b1020;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #142047 0%, transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, #162130 0%, transparent 60%),
+    var(--bg);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero { padding: 12px 0 8px; }
+.box { border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px; margin-bottom: 16px; }
+
+/* Code block inline */
+code { background: rgba(255,255,255,0.06); padding: 0 4px; border-radius: 4px; }
+

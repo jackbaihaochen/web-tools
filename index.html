@@ -1,75 +1,16 @@
 <!doctype html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="QGZ-7VheK-sHg0cYYJsio4DfNafRIxdgNVwT5oZVD_Y" />
-    <title>在线工具箱 | JSON 格式化、更多小工具</title>
-    <meta name="description" content="零成本在线工具箱：首发 JSON 格式化，后续将增加转换、压缩、开发者常用工具等。纯前端，隐私友好。" />
+    <title>在线工具箱｜JSON 格式化、更多小工具</title>
+    <meta name="description" content="零成本在线工具箱：JSON 格式化等纯前端工具。隐私友好，不上传数据。" />
     <link rel="canonical" href="https://jackbaihaochen.github.io/web-tools/" />
-
-    <!-- 结构化数据：站点级（CollectionPage + WebSite） -->
-    <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"CollectionPage",
-  "name":"在线工具箱",
-  "url":"https://jackbaihaochen.github.io/web-tools/",
-  "about":"收录在线实用小工具（开发者向与通用向）"
-}
-</script>
-    <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"在线工具箱",
-  "url":"https://jackbaihaochen.github.io/web-tools/"
-}
-</script>
-
-    <link rel="stylesheet" href="./assets/css/site.css" />
-</head>
-
-<body>
-    <header id="site-header"></header>
-
-    <main class="wrap">
-        <section class="hero">
-            <h1>在线工具箱</h1>
-            <p class="muted subtitle">纯前端 · 隐私友好 · 持续扩充</p>
-        </section>
-
-        <section>
-            <h2>工具目录</h2>
-            <ul class="card-list">
-                <li class="card">
-                    <a class="card-link" href="./tools/json-formatter/">
-                        <h3>JSON 格式化</h3>
-                        <p>在线美化 / 压缩 / 校验 / 复制 / 下载</p>
-                    </a>
-                </li>
-                <!-- 以后新增工具，照此添加 <li> 即可 -->
-            </ul>
-        </section>
-
-        <section>
-            <h2>常见问题（FAQ）</h2>
-            <p class="muted">更多问题参见 <a href="./faq.html">FAQ 全文</a>。</p>
-            <details>
-                <summary>为什么说隐私友好？</summary>
-                <p>工具全部在浏览器本地运行，不上传你的数据到服务器。</p>
-            </details>
-            <details>
-                <summary>后续会增加哪些工具？</summary>
-                <p>计划：JSON↔YAML 转换、Base64 编解码、正则测试、哈希计算等。</p>
-            </details>
-        </section>
-    </main>
-
-    <footer id="site-footer"></footer>
-
-    <script src="./assets/js/site.js"></script>
-</body>
-
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+  
 </html>
